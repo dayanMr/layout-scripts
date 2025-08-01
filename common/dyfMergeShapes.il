@@ -1,0 +1,27 @@
+procedure(dyfMergeShapes()
+let((cv bbox lpp layerName purpose figGrp abeShapes abeNewShapes newShapes mergeShapes)
+cv=geGetEditCellView()
+bbox=enterBox()
+lpp=leGetEntryLayer()
+layerName=nth(0 lpp)
+purpose=nth(1 lpp)
+figGrp=leGetEditFigGroup()
+geDeselectAll()
+if(bbox
+	then
+	abeInit(cv)
+	abeShapes=abeLayerFromCellView(layerName ?bbox bbox ?purpose purpose)
+	abeLayerSize(abeShapes abeShapes 2)
+	abeNewShapes=abeNewLayer()
+	abeLayerSize(abeShapes abeNewShapes -2)
+	;abeLayerMergeTiles(abeLayerNew "vertical")
+	newShapes=abeLayerToCellView(abeNewShapes layerName ?purpose purpose )
+	abeDone() 
+	mergeShapes=leMergeShapes(newShapes)
+	if(figGrp then
+	mapcar(lambda((x) dbAddFigToFigGroup(figGrp x)) mergeShapes))
+	geSelectFigs(mergeShapes)
+	);if 
+)
+)
+hiSetBindKey("Layout" "Shift<Key>8" "dyfMergeShapes()")
