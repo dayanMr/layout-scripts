@@ -13,11 +13,11 @@ procedure(setvisible()
 		fg33layers = list("M1 drawing" "M2 drawing" "M3 drawing" "ALPA drawing" "PA drawing" "V1 drawing" "V2 drawing" "M1TXT drawing" 
 				"M2TXT drawing" "M3TXT drawing" "ALPATXT drawing" "text drawing" )
 		tfmapping = makeTable("tfmapping")
-		tfmapping["hlmc40lp"] = hllayers
-		tfmapping["hlmc28hkcp"] = hl28layers
-		tfmapping["FG50_18_Lib"] = fg55layers
-		tfmapping["hlmc55ef"] = hl55layers
-		tfmapping["FG50_33_Lib"] = fg33layers
+		tfmapping["hlmc"] = hllayers
+		tfmapping["tsmc"] = hl28layers
+		tfmapping["smic"] = fg55layers
+		tfmapping["umc"] = hl55layers
+		tfmapping["xmc"] = fg33layers
 	cv = geGetEditCellView(getCurrentWindow())
 	tech = techGetTechFile(cv)
 	tfname = tech~>libName
